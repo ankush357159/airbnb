@@ -1,7 +1,19 @@
-import 'tailwindcss/tailwind.css'
+import "tailwindcss/tailwind.css";
+import "../styles/global.css";
+import ProgessBar from "@badrap/bar-of-progress";
+import Router from "next/router";
 
+const progress = new ProgessBar({
+	size: 4,
+	color: "#FE955E",
+	className: "z-50",
+	delay: 100,
+});
+
+Router.events.on("routeChangeStart", progress.start);
+Router.events.on("routeChangeComplete", progress.finish)
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+	return <Component {...pageProps} />;
 }
 
-export default MyApp
+export default MyApp;
